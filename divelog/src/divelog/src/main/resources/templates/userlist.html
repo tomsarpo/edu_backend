@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Userlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Users</h1>
+    <table>
+		<tr>
+		    <th>Name</th>
+		</tr>  
+    	<tr th:each = "User : ${Users}">
+    		<td th:text="${User.} + ' ' + ${User.last_name}"></td>
+    		<td th:text="${User.adminaccount}"></td>
+    		<td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>		
+    	</tr>
+     </table>  	
+</body>
+</html>
