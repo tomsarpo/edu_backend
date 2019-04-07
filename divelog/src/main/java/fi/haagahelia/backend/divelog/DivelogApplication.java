@@ -1,5 +1,10 @@
 package fi.haagahelia.backend.divelog;
 
+<<<<<<< HEAD
+=======
+import java.util.Date;
+
+>>>>>>> parent of 670141d... V7
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -25,16 +30,13 @@ public class DivelogApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner justDemo(UserRepository urepository, AdminUserRepository aurepository, DiveLogRepository drepository) {
+	public CommandLineRunner justDemo(UserRepository urepository, DiveLogRepository drepository) {
 		return (args) -> {
 			log.info("fill database");
 			
-			log.info("fill admin users");
-			aurepository.save(new AdminUser("Tomi", "S", "1234", true));
-			
 			log.info("fill users");
+			urepository.save(new User("Tomi", "S", "1234", true));
 			urepository.save(new User("Sami", "K", "123456", false));
-			urepository.save(new User("Petri", "H", "321", false));
 			
 			log.info("fill divelogs");
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

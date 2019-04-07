@@ -3,7 +3,6 @@ package fi.haagahelia.backend.divelog.web;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fi.haagahelia.backend.divelog.domain.User;
 import fi.haagahelia.backend.divelog.domain.UserRepository;
 
-@Controller //määritellään luokka kontrolleriksi
 public class UserRestController {
 	@Autowired  //injektoi repositoryyn
 	private UserRepository repository; 
