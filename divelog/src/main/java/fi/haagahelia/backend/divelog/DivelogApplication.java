@@ -1,19 +1,12 @@
 package fi.haagahelia.backend.divelog;
 
-import java.util.Date;
-
-import javax.activation.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import fi.haagahelia.backend.divelog.domain.AdminUser;
 import fi.haagahelia.backend.divelog.domain.AdminUserRepository;
@@ -30,25 +23,6 @@ public class DivelogApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DivelogApplication.class, args);
 	}
-		
-//	@Bean
-//	public DataSource dataSource2() {
-//	    return DataSourceBuilder<DataSource> //Builder vaatii DataSourcen
-//	        .create()
-//	        .username("")
-//	        .password("")
-//	        .url("jdbc:sqlite:http://safiiriprojektit.fi/EDU/DB/divelog.sqlite")
-//	        .driverClassName("org.sqlite.JDBC")
-//	        .build();
-//	}
-	
-//	@Bean
-//	public DataSource dataSource() {
-//	        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-//	        dataSourceBuilder.driverClassName("org.sqlite.JDBC");
-//	        dataSourceBuilder.url("jdbc:sqlite:your.db");
-//	        return dataSourceBuilder.build();   
-//	}
 	
 	@Bean
 	public CommandLineRunner justDemo(UserRepository urepository, AdminUserRepository aurepository, DiveLogRepository drepository) {
@@ -70,11 +44,12 @@ public class DivelogApplication {
 			drepository.save(new DiveLog(urepository.findByfirstName("Sami").get(0), formatter.parse("2018-02-21"), "järvi", "diveplan...", "comment...", null));
 			
 			log.info("fetch data");
-			for (User user : urepository.findAll()) {
-				log.info(user.toString());
-			}
+			
 			for (DiveLog divelog : drepository.findAll()) {
 				log.info(divelog.toString());
+			}
+			for (User user : urepository.findAll()) {
+				log.info(user.toString());
 			}
 
 		};

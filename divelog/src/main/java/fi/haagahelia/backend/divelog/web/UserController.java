@@ -25,8 +25,10 @@ public class UserController {
     @RequestMapping(value="/userlist")
     public String userList(Model model, @RequestParam(defaultValue="0") int page) {	
     	log.info("open userlist");
+    	//model.addAttribute("users", repository.findAll() );
     	// lisätään sivutustoiminto thymeleafiin
         model.addAttribute("users", repository.findAll( PageRequest.of(page, 4)  ) );
+        log.info("model: " + model.toString() );
         return "userlist";
     }
 
