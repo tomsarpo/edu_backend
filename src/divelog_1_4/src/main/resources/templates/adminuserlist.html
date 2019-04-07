@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Admins</h1>
+    <table>
+		<tr>
+		    <th>Name</th>
+		    <th>Email</th>
+		</tr>  
+    	<tr th:each = "admin : ${admins}">
+    		<td th:text="${admin.firstName} + ' ' + ${admin.lastName}"></td>
+ 			<td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>    		
+    	</tr>
+     </table>
+	 <a href="/add">Add </a>    	
+</body>
+</html>

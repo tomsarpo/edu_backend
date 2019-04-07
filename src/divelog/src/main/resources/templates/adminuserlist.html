@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Adminlist</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+	<div class="container">
+    <!-- Static navbar -->
+    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <a class="navbar-brand" href="/">Divelog App</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item "><a class="nav-link" href="/">Home</a></li>	      
+              <li class="nav-item "><a class="nav-link" href="/userlist">User list</a></li>
+              <li class="nav-item active"><a class="nav-link" href="/adminuserlist">Admin user list</a></li>
+              <li class="nav-item "><a class="nav-link" href="/divelist">Dive list</a></li>
+              <li class="nav-item "><a class="nav-link" href="/userlist_api">User list API</a></li>
+		      
+		    </ul>
+		    <a class="navbar-brand" href="" th:text="${username}">Project name</a>
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		  </div>
+		</nav>
+    	<div class="container"><p> </p> </div>
+	    <!-- Main component for a primary marketing message or call to action -->
+	    <div class="jumbotron">
+	        <h3>Admins</h3>
+		    <table class="table table-striped">
+				<tr>
+				    <th>Name</th>
+				</tr>  
+		    	<tr th:each = "admin : ${admins}">
+		    		<td th:text="${admin.firstName} + ' ' + ${admin.lastName}"></td>
+		    		<td th:text="${admin.adminaccount}"></td>
+		    		<td><a th:href="@{/delete_admin/{id}(id=${admin.id})}">Delete</a></td>		
+		    	</tr>
+		     </table>
+	    </div>
+	</div> <!-- /container -->
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>
