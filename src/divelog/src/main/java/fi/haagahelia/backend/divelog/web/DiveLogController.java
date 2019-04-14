@@ -2,6 +2,8 @@ package fi.haagahelia.backend.divelog.web;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fi.haagahelia.backend.divelog.DivelogApplication;
 import fi.haagahelia.backend.divelog.domain.DiveLog;
 import fi.haagahelia.backend.divelog.domain.DiveLogRepository;
 
 @Controller //asetetaan luokalle kontroller tyyppi
 public class DiveLogController {
+	
+	private static final Logger log = LoggerFactory.getLogger(DivelogApplication.class);
 
 	@Autowired  //injektoi repositoryyn
 	private DiveLogRepository repository; 
@@ -47,9 +52,11 @@ public class DiveLogController {
     
     //käytetään add_.html templatessa
     @RequestMapping(value = "/save_dive", method = RequestMethod.POST)
-    public String save(@Valid DiveLog dive, BindingResult bindingResult){ //validation of new user input
+    public String save(@Valid DiveLog dive, BindingResult bindingResult, Model model){ //validation of new user input
     	if (bindingResult.hasErrors()) {
-        	return "error";
+    		log.info("error@bindingResult: " + bindingResult );
+    		//model.addAttribute("bindingResult", bindingResult.toString() );
+        	return "/error";
         }
     	
     	repository.save(dive);
