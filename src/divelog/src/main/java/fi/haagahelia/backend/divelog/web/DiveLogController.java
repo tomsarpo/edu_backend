@@ -1,11 +1,14 @@
 package fi.haagahelia.backend.divelog.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,10 +47,15 @@ public class DiveLogController {
     
     //käytetään add_.html templatessa
     @RequestMapping(value = "/save_dive", method = RequestMethod.POST)
-    public String save(DiveLog dive){
-        repository.save(dive);
+    public String save(@Valid DiveLog dive, BindingResult bindingResult){ //validation of new user input
+    	if (bindingResult.hasErrors()) {
+        	return "error";
+        }
+    	
+    	repository.save(dive);
         return "redirect:/divelist";
-    }    
+    }
+   
 
     @RequestMapping(value = "/delete_dive/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") Long Id, Model model) {

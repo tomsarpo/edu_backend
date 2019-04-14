@@ -37,31 +37,33 @@
 		  </div>
 		</nav>
     	<div class="container"><p> </p> </div>
-	    <!-- Main component for a primary marketing message or call to action -->
-	    <div class="jumbotron">
-	        <h3>Users</h3>
-	        <a href="/add_user" class="btn btn-primary a-btn-slide-text">
-		        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		        <span><strong>Add</strong></span>    
-		    </a>
-		    <br/><br/>
-
-		    <table class="table table-striped">
-				<tr>
-				    <th>Id</th>
-				    <th>Name</th>
-				    <th>Is admin</th>
-				    <th>Actions</th>
-				</tr>  
-		    	<tr th:each = "user : ${users}">
-		    		<td th:text="${user.id}"></td>
-		    		<td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
-		    		<td th:text="${user.adminaccount}"></td>
-		    		<td><a th:href="@{/delete_user/{id}(id=${user.id})}">Delete</a></td>		
-		    	</tr>
-		     </table>
-	    </div>
-	</div> <!-- /container -->
+	    <!-- Main content area  -->
+		    <div class="jumbotron">
+		        <h3>Users</h3>
+		        <a href="/add_user" class="btn btn-primary a-btn-slide-text">
+			        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			        <span><strong>Add</strong></span>    
+			    </a>
+			    <br/><br/>
+	
+			    <table class="table table-striped">
+					<tr>
+					    <th>Id</th>
+					    <th>Name</th>
+					    <th>Is admin</th>
+					    <th>Actions</th>
+					</tr>  
+			    	<tr th:each = "user : ${users}">
+			    		<td th:text="${user.id}"></td>
+			    		<td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
+			    		<td th:text="${user.adminaccount}"></td>
+			    		<td><a th:href="@{/delete_user/{id}(id=${user.id})}">Delete</a></td>		
+			    	</tr>
+			     </table>
+			     
+			     
+		    </div>
+		</div> <!-- /container -->
 	<!-- Bootstrap core JavaScript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

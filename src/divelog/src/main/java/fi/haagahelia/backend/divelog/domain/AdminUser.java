@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,9 +29,20 @@ public class AdminUser {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+	
+	@NotNull
+	@Size(min=1, max=60)
     private String firstName;
+	
+	@NotNull
+	@Size(min=1, max=100)
     private String lastName;
-    private String loginpwd256;
+	
+	@NotNull
+	@Size(min=1, max=54)
+    private String loginpwd256; //convert to 64-char text by adding 10-char baseword & convert to SHA256
+	
+	@NotNull
     private boolean adminaccount;
     
     public AdminUser() {}

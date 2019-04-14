@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -35,11 +37,20 @@ public class DiveLog {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	// This is "org.springframework.format.annotation.DateTimeFormat"
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
+	
+	@NotNull
+	@Size(min=1, max=160)
     private String place;
+	
+	@Size(min=1, max=5000)
     private String diveplan;
+	
+	@Size(min=1, max=5000)
     private String comment;
+	
     private String image;
     
     @ManyToOne
