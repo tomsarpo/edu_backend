@@ -26,7 +26,7 @@ public class UserRepositoryTest {
 	public void findByNameShouldReturnUser() {
 	List<User> users = repository.findByfirstName("Tomi");
 	assertThat(users).hasSize(1);
-	assertThat(users.get(0).getFirstName()).isEqualTo("John");
+	assertThat(users.get(0).getFirstName()).isEqualTo("Tomi");
 	}
 	
 	@Test

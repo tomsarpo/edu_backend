@@ -26,6 +26,7 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    
     @NotNull
 	@Size(min=1, max=60)
     private String firstName;

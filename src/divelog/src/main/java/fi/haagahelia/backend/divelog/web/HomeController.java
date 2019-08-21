@@ -30,13 +30,13 @@ public class HomeController {
         return "main";
     } 
 	
-	@PostMapping(value="/login")
+	@RequestMapping(value="/login")
     public String login() {	
-        //return "login";
-        return "redirect:/main";
+        return "login";
+        //return "redirect:/main";
     }
 	
-	@PostMapping(value="/browser")
+	@RequestMapping(value="/browser")
     public String browser() {	
         //return "login";
         return "redirect:/browser/index.html#/";
